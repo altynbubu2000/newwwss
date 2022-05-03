@@ -33,7 +33,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ['-created_at']
+        ordering = ['-created_at']  
         
 # class Category(models.Model):
 #     title = models.CharField(max_length=150, db_index=True, verbose_name='Наименование категории')

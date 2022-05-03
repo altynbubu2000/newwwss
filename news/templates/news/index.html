@@ -1,3 +1,17 @@
+{% comment %} {% extends 'base.html' %}
+
+{% block sidebar %}
+<div class="col-md-3">
+{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+{% endblock %} {% endcomment %}
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,7 +28,7 @@
    
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Navbar</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" 
  data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +37,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
-            <li class="nav-link" href="/">главная</a> </li>
-            <li class="nav-link" href="/">добавить новость</a> </li>
+            <li class="nav-link" href="{% url 'home' %}">главная</a> </li>
+            <li class="nav-link" href="{% url 'home' %}">добавить новость</a> </li>
         </ul>
     </div>
 </nav>
@@ -34,19 +48,19 @@
     <h1>{{ title }}</h1>
     <div class="row">
 
-        <div class="col-md-3">
+       
             <div class="list-group"
                 {% for item  in categories %}
-                <a href="/category/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+                <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
 
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-9">
+        
              {% for item in news %}
             <div class="card mb-3">
                 <div class="card-header">
-                    катигория: {{ item.category }}
+                    катигория:<a href-"{% url 'category' item.category.pk %}"> {{ item.category }} </a>
                 </div>
                 <div class="card-body">
                     <div class="media">
